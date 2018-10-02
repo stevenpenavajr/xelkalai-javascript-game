@@ -1,0 +1,127 @@
+Project #2 - Due Monday-October 8, 23:59:59pm
+
+Use Canvas and submit your JavaScript file as "Program #2".  
+Please name your file Lname.html, or Lname1Lname2.html if you 
+work in a group of two, and then zip it as the same name .zip.
+---------------------------------------------------------
+
+Note: You shall follow Dr. Finkel's checklist for good programming:
+http://www.cs.uky.edu/~raphael/checklist.html
+
+---------------------------------------------------------
+Xelkalai has successfully implemented his travel agency
+thanks to your help.  He is now faced with the problem
+most business people face: competition (and pirates....).
+
+Your job is to write a Javscript program to simulate his
+issues.  This will involve Xelkalai's ships and a competitor,
+Nonkio.  Each company has two ships, a scout ship and a
+passenger ship.  Each must get from the start to the end 
+of the journey as quickly and safely as possible.
+
+There are many obstacles, including pirates, route changes,
+and sabotage.
+
+
+Requirements:
+
+    - You shall start with Xelkalai's starter code.  You shall 
+      maintain the data structure used to render the simulation.
+    - Your program shall work within the Chrome browser.
+
+Specifications:
+    - You shall produce a single HTML file with JavaScript.
+    - Your JavaScript will utilize addEventListener() and
+      removeEventListener() to manage where the user clicks
+      the mouse.  Elements should not be click-able when they
+      should not be used!
+    - Each captain gets a turn.  For their turn they can
+      choose one of two actions:  "Move" or "Sabotage".
+    - You will choose the actions of Xelkalai's ships.
+    - Your program will then randomly choose for Nonkio's
+      ships.  80% of the time he will move.  The other 20%
+      of the time he will randomly pick sabotage.
+    - You shall have two separate text boxes denoting
+      (via innerHTML) what move happened for the captains'
+      turn.  IE:
+          "Move selected.  5 rolled.  Scout moved."
+      or
+          "Sabotage selected.  Area XYZ marked."
+      or something similar.
+
+Logic:
+    - Present an HTML document with appropriate elements (and ids)
+      that can be modified/updated via JavaScript.
+    - There are 20 spaces from start to finish that BOTH ships
+      must traverse in order to win.
+    - Start by drawing each route (20 spaces) and starting the
+      players' ships at the beginning.
+    - Allow the player/captain to click on their choice (move or
+      sabotage).  If they move, roll a die randomly from 1-6.
+      Based on the result, the player must choose which ship
+      (scout or passenger) to move that many spaces (or to the end
+      of the route if enough).  Your program will update the
+      board with the new location.  Once both scout and passenger
+      of either team is at the finish/end, they are declare the
+      winner.
+    - The captain can choose to sabotage (up to 3 times total
+      per simulation) instead of moving.  If they choose 
+      sabotage, then your program will highlight all available 
+      spots to sabotage and set them as clickable.  The user 
+      then selects which place to sabotage and update the 
+      element visually (either with an image or text; text
+      should be red) to denote it is blocked.  
+      A blocked space means a ship cannot stop there.  
+      It can, however, pass over it without penalty.  
+      So it a blocked space is 3 spaces away from Xelkalai's 
+      scout ship and he rolls a 3 - he cannot move the scout 
+      ship for this turn.  He must move the passenger ship 
+      or "pass" his turn if he can't move it either.
+
+    - When you roll randomly, you're simulating a route
+      change and/or pirates with a low roll.  Nothing
+      special needs to happen, just a shorter leg of the
+      trip happens.
+
+    - After you "play" Xelkalai's turn, you will let the
+      computer (ie, your Javascript) to play/simulate what
+      Nonkio does.  Remember:  80% of the time he'll move
+      a ship, the other 20% he'll try to sabotage, randomly
+      picking a place to sabotage.  If he's used up his 3
+      sabotage moves, he will move his ships instead.
+
+Hints:
+    - use console.log() to help debug your code.
+    - I strongly recommend use of git repository!
+    - You can use/declare global variables to keep state, make 
+      sure to use correct scope.
+    - Start with the source code in
+      Canvas->Files-Assignments->Project2->P2_starter.html
+      You'll probably have to click the download icon!
+    - Code each step of the game and test.  As each is working
+      correctly, add the next step, repeat.
+      0) enable the start button, when it is clicked call
+         the appropriate functions (like drawBoard(), etc.)
+         then disable the start button until the game is over.
+      1) draw the game board - use a loop to add the 20 spaces
+         to each path, don't hard code them.
+      2) Write a function like moveShip() or sabotage() that
+         is called when (1) you choose it for Xelkalai or
+         (2) when Nonkio's random choice happens.
+      3) You might want a doTurn() function that looks something
+         like:
+              1) tell Xelkalai make a choice
+              2) enable "Move" and "Sabotage" buttons
+         Then, the turn code is technically finished.  Your
+         code is waiting for moveShip() or sabotage() to be
+         triggered by a click event.
+      4) moveShip() will update the image for that space/element
+         (and the one it moved vacated).
+      5) At the end of moveShip() and sabotage() call a
+         function to perform Nonkio's move.  After that function
+         see if someone has finished and either declare a winner
+         or wait for Xelkalai's next move.
+
+Teams:
+    - You have the option of working in teams of 2.  Each team 
+      member must contribute equally to the project.

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<style>
+		table,
+		td {
+			border: 1px solid black;
+		}
+	</style>
+
+</head>
+
+<body>
+	<h1> test create rows/cells </h1>
+
+	<!-- remember: example code! -->
+	<table id="control">
+		<tr>
+			<td id="reset"><button onclick="Reset()">Reset</td>
+			<td id="insert"><button onclick="insertSpot()">Insert</td>
+			<td id="start">Start</td>
+		<tr>
+	</table>
+	<p>
+		<!-- Note this is one table, you'll want TWO, one for each path -->
+		<table id="trouble">
+			<tr>
+				<td>Row 0 Cell 0</td>
+				<td>Row 0 Cell 1</td>
+			</tr>
+		</table>
+
+		<script>
+			var theBoard = document.getElementById("trouble");
+
+			var row1 = theBoard.insertRow(-1);
+
+			cell10 = row1.insertCell(-1);
+			text = "Row 1, Cell 0";
+			cell10.appendChild(document.createTextNode(text));
+			console.log("Here1");
+
+			cell11 = row1.insertCell(-1);
+			text = "Row 1, Cell 1";
+			cell11.appendChild(document.createTextNode(text));
+			console.log("Here2");
+
+			var row2 = theBoard.insertRow(-1);
+
+			cell20 = row2.insertCell(-1);
+			img20 = document.createElement("img");
+			img20.src = "../assets/images/Red.png";
+			img20.width = "100";
+			img20.height = "100";
+			cell20.appendChild(img20);
+			console.log("Here3");
+
+			cell21 = row2.insertCell(-1);
+			img21 = document.createElement("img");
+			img21.src = "../assets/images/Purple.png";
+			img21.width = "100";
+			img21.height = "100";
+			cell21.appendChild(img21);
+			console.log("Here4");
+
+			function IclickedHere() {
+				// "this" should be an object of what was clicked!
+				this.innerHTML = "clicked!";
+				if (this.style.color == "red") {
+					this.style.color = "blue";
+				} else {
+					this.style.color = "red";
+				}
+			}
+
+			function insertSpot() {
+				var theBoard = document.getElementById("trouble");
+				var newRow = theBoard.insertRow(-1);
+				var numRows = theBoard.getElementsByTagName("tr").length - 1; // rows start at 0
+
+				cell10 = newRow.insertCell(-1);
+				text = "Row " + numRows + ", Cell 0";
+				cell10.appendChild(document.createTextNode(text));
+				cell10.id = "newRow" + numRows + "0";
+
+				console.log("HereX :", cell10.id);
+
+				cell11 = newRow.insertCell(-1);
+				text = "Row " + numRows + ", Cell 1";
+				cell11.appendChild(document.createTextNode(text));
+				cell11.id = "newRow" + numRows + "1";
+				console.log("HereY :", cell11.id);
+
+				if (numRows == 5) {
+					// example event!
+					cell11.addEventListener("click", IclickedHere, false);
+					console.log("Debug: listener added!");
+				}
+				x = document.getElementById("newRow" + numRows + "1");
+				x.innerHTML += " - Rows: " + numRows;
+
+			}
+		</script>
+</body>
+
+</html>
